@@ -14,7 +14,7 @@ See it running in production at: https://obscure-brook-05265.herokuapp.com/
   curl -X POST -H "Content-Type: application/json" -d '{"to_number": "111222333", "message": "this is my message"}' "http://localhost:3000/outbound"
   ```
 
-A successful call responds with a 200 status and a message of, "Your message is being processed". Visit http://localhost:3000 in your browswer to retrieve the message_id and simulate an inbound response.
+A successful call responds with a 200 status and a message of, "Your message is being processed". Visit http://localhost:3000 in your browser to retrieve the message_id and simulate an inbound response.
 
 ## Simulating Inbound Responses
 
