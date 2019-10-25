@@ -17,7 +17,7 @@ class InboundTextProcessor
   private
 
   def text_message
-    @text_message ||= TextMessage.find_by(message_id)
+    @text_message ||= TextMessage.find_by(message_id: message_id)
   end
 
   def update_text
