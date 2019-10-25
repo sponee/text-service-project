@@ -2,11 +2,21 @@ require 'rails_helper'
 
 describe OutboundController do
   describe 'POST create' do
-    context 'failure' do
+    context 'generic failure' do
       it 'renders a 500 and explains why' do
         post :create
         expect(response.status).to eq(500)
         expect(JSON.parse(response.body)["message"]).to eq("Your message could not be processed")
+      end
+    end
+
+    context 'failure due to BadPhoneNumber' do
+      before { BadPhoneNumber.create!(phone_number: "867-5309") }
+
+      it 'renders a 500 and explains why' do
+        post :create, params: { to_number: "867-5309", message: "Jenny, I got your number" }
+        expect(response.status).to eq(500)
+        expect(JSON.parse(response.body)["message"]).to eq("Cannot text a known bad phone number")
       end
     end
 

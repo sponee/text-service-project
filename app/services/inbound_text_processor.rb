@@ -11,7 +11,7 @@ class InboundTextProcessor
   end
 
   def process
-    text_message ? update_text : false
+    text_message ? handle_updates : false
   end
 
   private
@@ -20,10 +20,13 @@ class InboundTextProcessor
     @text_message ||= TextMessage.find_by(message_id: message_id)
   end
 
-  def update_text
+  def handle_updates
     text_message.update_attributes!(status: status)
-    # if status is invalid, invalidate phone number
+    record_bad_number if status == 'invalid'
     true
   end
 
+  def record_bad_number
+    BadPhoneNumber.create(phone_number: text_message.phone_number)
+  end
 end
