@@ -10,15 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_25_182742) do
+ActiveRecord::Schema.define(version: 2019_10_25_194308) do
 
   create_table "text_messages", force: :cascade do |t|
     t.text "phone_number"
     t.text "message"
     t.text "message_id"
+    t.text "status"
     t.index ["message"], name: "index_text_messages_on_message"
     t.index ["phone_number", "message"], name: "index_text_messages_on_phone_number_and_message"
     t.index ["phone_number"], name: "index_text_messages_on_phone_number"
+    t.index ["status"], name: "index_text_messages_on_status"
   end
 
 end
