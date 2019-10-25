@@ -1,0 +1,25 @@
+<div class="jumbotron">
+  <h2>Text Messages</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Message ID</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Message</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @text_messages.each do |text| %>
+        <tr>
+          <td scope="row"><%= text.message_id %></td>
+          <td><%= text.phone_number %></td>
+          <td><%= text.message %></td>
+          <td><%= text.status %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </td>
+</div>
+
