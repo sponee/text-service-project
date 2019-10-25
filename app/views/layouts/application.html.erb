@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TextServiceProject</title>
+    <title>Text Service Project</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,13 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href=<%= root_path %>>Text Service</a>
+      <%= form_tag(root_path, method: :get, class: "form-inline") do %>
+        <%= text_field_tag :phone_number, @phone_number, class: "form-control mr-sm-2", placeholder: "Phone Number"  %>
+        <%= submit_tag 'Search', class: "btn btn-outline-success my-2 my-sm-0" %>
+      <% end %>
+    </nav>
     <div class="container">
       <%= yield %>
     </div>
