@@ -18,7 +18,7 @@ class OutboundTextProcessor
   private
 
   def send_text
-    `curl -X POST -H "Content-Type: application/json" -d '{"to_number": "#{to}", "message": "#{message}", "callback_url": "https:/example.com"}' "https://jo3kcwlvke.execute-api.us-west-2.amazonaws.com/dev/provider1"`
+    `curl -X POST -H "Content-Type: application/json" -d '{"to_number": "#{to}", "message": "#{message}", "callback_url": "https://obscure-brook-05265.herokuapp.com/inbound"}' "https://jo3kcwlvke.execute-api.us-west-2.amazonaws.com/dev/provider1"`
   end
 
   def create_text(message_id)
