@@ -15,6 +15,16 @@ describe InboundController do
         }.from(nil).to('delivered')
         expect(response.status).to eq(200)
       end
+
+      context 'the message\s status is invalid' do
+        it 'creates a new BadPhoneNumber' do
+          expect{
+            post :create, params: { message_id: message_id, status: 'invalid' }
+          }.to change{
+            BadPhoneNumber.count
+          }.by(1)
+        end
+      end
     end
 
     describe 'failure' do
