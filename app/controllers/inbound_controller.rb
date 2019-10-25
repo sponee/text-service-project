@@ -3,6 +3,7 @@ class InboundController < ApplicationController
   before_action :setup, only: [:create]
 
   def create
+    Rails.logger.info(params)
     ::InboundTextProcessor.run(@message_id, @status) ? render_success : render_failure
   end
 
