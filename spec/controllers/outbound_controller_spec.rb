@@ -11,6 +11,8 @@ describe OutboundController do
     end
 
     context 'success' do
+      before { allow(OutboundTextProcessor).to receive(:run).with(any_args) { true } }
+
       it 'renders a 200 and explains why' do
         post :create, params: { to_number: "867-5309", message: "Jenny, I got your number" }
         expect(response.status).to eq(200)
