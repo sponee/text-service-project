@@ -1,8 +1,8 @@
 class OutboundController < ApplicationController
   protect_from_forgery with: :null_session
+  before_action :setup, only: [:create]
 
   def create
-    render_failure and return unless setup
     ::OutboundTextProcessor.run(@message, @to_number) ? render_success : render_failure
   end
 
@@ -11,7 +11,7 @@ class OutboundController < ApplicationController
   def setup
     @message = params["message"]
     @to_number = params["to_number"]
-    @message.present? && @to_number.present?
+    render_failure and return unless @message.present? && @to_number.present?
   end
 
   def render_success
