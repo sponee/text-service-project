@@ -1,5 +1,9 @@
 <div class="jumbotron">
   <h2>Text Messages</h2>
+  <%= form_tag(root_path, method: :get) do %>
+    Phone Number <%= text_field_tag :phone_number, @phone_number %>
+    <%= submit_tag 'Search' %>
+  <% end %>
   <table class="table">
     <thead>
       <tr>
