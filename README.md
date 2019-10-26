@@ -5,9 +5,10 @@ See it running in production at: https://obscure-brook-05265.herokuapp.com/
 ## For Local Development
 
 1. `git clone git@github.com:sponee/text-service-project.git`
-2. `bundle install`
-3. `bundle exec rake db:setup`
-4. `rails s`
+2. `cd text-service-project`
+3. `bundle install`
+4. `bundle exec rake db:setup`
+5. `rails s`
 
 ## Simulating Outbound Calls
   ```
