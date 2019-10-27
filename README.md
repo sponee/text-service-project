@@ -11,7 +11,7 @@ See it running in production at: https://obscure-brook-05265.herokuapp.com/
 5. `rails s`
 
 ## Making Calls in Development
-<details open>
+<details>
 <summary></summary>
 <br>
   
