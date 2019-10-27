@@ -16,7 +16,7 @@ class OutboundController < ApplicationController
   end
 
   def render_success
-    render json: { message: "Your message is being processed"}, status: 200
+    render json: { message: "Your message is being processed" }, status: 200
   end
 
   def render_failure(message)
