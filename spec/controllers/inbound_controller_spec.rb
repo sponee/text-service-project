@@ -2,34 +2,23 @@ require 'rails_helper'
 
 describe InboundController do
   describe 'POST create' do
+    let(:status)     { 'delivered' }
     let(:message_id) { '12345' }
 
     describe 'success' do
-      let!(:text_message) { TextMessage.create!(phone_number: '8675309', message: 'passing grade', message_id: message_id) }
+      it 'runs the InboundTextProcessor and returns a 200' do
+        expect(InboundTextProcessor).to receive(:run).with(message_id, status) { true }
 
-      it 'updates the text message\'s status and returns a 200' do
-        expect{
-          post :create, params: { message_id: message_id, status: 'delivered' }
-        }.to change{
-          text_message.reload.status
-        }.from(nil).to('delivered')
+        post :create, params: { message_id: message_id, status: status }
+
         expect(response.status).to eq(200)
-      end
-
-      context 'the message\s status is invalid' do
-        it 'creates a new BadPhoneNumber' do
-          expect{
-            post :create, params: { message_id: message_id, status: 'invalid' }
-          }.to change{
-            BadPhoneNumber.count
-          }.by(1)
-        end
       end
     end
 
     describe 'failure' do
       it 'returns a 500' do
-        post :create, params: { message_id: message_id, status: 'delivered' }
+        post :create
+
         expect(response.status).to eq(500)
       end
     end
