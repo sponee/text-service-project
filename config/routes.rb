@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'text_messages#index'
+  mount RailsAdmin::Engine => '/', as: 'rails_admin'
   post '/outbound', to: 'outbound#create'
   post '/inbound', to: 'inbound#create'
 end

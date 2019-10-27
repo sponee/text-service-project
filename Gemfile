@@ -38,6 +38,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'bootstrap'
 gem 'jquery-rails'
+gem 'rails_admin', '~> 2.0'
 
 group :development, :test do
   gem 'pry-rails'
